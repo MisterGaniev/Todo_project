@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
+<body style="background-image: url('{% static 'images/Back.jpg' %}');">
+        <div class="title">
+          <h1>Welcome! To Login Page</h1>
+          <h2>You Can Enter & See Your Plans</h2>
+          <fieldset>
+              <legend>
+                  <h6><a href="{% url 'reg' %}">Registration</a></h6>
+              </legend>
+          <form action="{% url 'login' %}" method="post"> {% csrf_token %}
+            <label>
+                <input name="login" type="text" placeholder="Login" required="required">
+            </label>
+
+            <label>
+                <input name="password" type="password" placeholder="password" required="required">
+            </label>
+
+            <div class="link">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+            </fieldset>
+        </div>
+</body>
+</html>

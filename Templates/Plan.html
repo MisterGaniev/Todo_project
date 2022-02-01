@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Form.css' %}">
+</head>
+<body>
+
+            <h1>Enter your <em> Plans </em></h1>
+        <fieldset>
+            <form action="{% url 'ToDo' %}" method="post"> {% csrf_token %}
+            <div>
+                <label class="text">
+                    <input name="title" type="text" placeholder="Enter a title">
+                </label>
+                <label class="text">
+                    <input name="date-time" type="datetime-local" placeholder="Enter a time">
+                </label>
+            </div>
+            <div>
+                <label class="text">
+                    <input name="place" type="text" placeholder="Enter a place">
+                </label>
+                <label class="text">
+                    <input name="description" type="text" placeholder="Enter some information">
+                </label>
+            </div>
+            <div class="chek">
+                <label for="review"><span> Status </span></label>
+                    <select name="status" id="">
+                        <option value="Active">Active</option>
+                        <option value="Soon" selected>Soon</option>
+                        <option value="Done">Done</option>
+                    </select>
+            </div>
+                <a href="{% url 'logout' %}" class="logout"><img src="{% static 'images/logout.png' %}" alt="">Logout</a>
+                <button class="button" type="Submit">Submit</button>
+            </form>
+        </fieldset>
+        </div>
+                                <!--------Plans_view------->
+            {% for plans in pl%}
+            <div class="plan_view">
+                <h3><span> Title </span></h3>
+                <p>{{plans.title}}</p>
+
+            <h3><span> PLace </span></h3>
+            <p>{{plans.place}}</p>
+
+            <h3><span> Description </span></h3>
+            <p>{{plans.description}}</p>
+
+            <h4> <span> Status </span>: {{plans.status}}</h4>
+
+            <a class="delete" href="{{plans.id}}">Delete</a>
+
+            <h4> <span> Date </span>: {{plans.time}}</h4>
+            </div>
+            {% endfor %}
+
+
+</body>
+</html>
+</body>
+</html>
